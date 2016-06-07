@@ -1,0 +1,99 @@
+
+class WorkspaceTask extends DefaultTask {
+  String dockerImage
+  String identifier
+
+  private String workspacePath = 'workspaces'
+
+  @TaskAction
+  def createWorkspace() {
+    if(!exists()) {
+      create()
+    }
+  }
+
+  private def create() {
+    def id = new ByteArrayOutputStream().withStream { os ->
+      def result = project.exec {
+        executable = 'docker'
+        args = [ 'create', dockerImage ]
+        standardOutput = os
+      }
+      os.toString().trim()
+    }
+
+    def path = new File(workspacePath)
+    if(!path.exists()) {
+      path.mkdirs()
+    }
+    assert path.isDirectory()
+
+    def file = new File(path, identifier)
+    file.write(id)
+    file << '\n'
+  }
+
+  private def exists() {
+    def file = new File(workspacePath, identifier)
+    if(!file.exists()) {
+      return false
+    }
+
+    def lines = file.readLines()
+    if(lines.size() < 1) {
+      return false
+    }
+
+    def id = lines[0]
+    def psResult = new ByteArrayOutputStream().withStream { os ->
+      def result = project.exec {
+        executable = 'docker'
+        args = [ 'ps', '-f', "id=${id}", '-a', '--format', '{{.ID}}' ]
+        standardOutput = os
+      }
+      os.toString().trim()
+    }
+
+    if(psResult.isEmpty()) {
+      return false
+    }
+    if(!id.startsWith(psResult)) {
+      return false
+    }
+
+    return true
+  }
+}
+
+class CMake {
+  String container
+  String workspace
+
+  def init() {
+    // cmake ..
+  }
+
+  def build() {
+    // cmake --build . --target xxx
+  }
+}
+
+task workspace(type: WorkspaceTask) {
+  dockerImage = 'raphaelmeyer/base:1.1.0'
+  identifier = 'arm-bcm2708'
+
+  doLast {
+    def cmake = new CMake()
+    cmake.init()
+  }
+}
+
+task build {
+  dependsOn workspace
+
+  doLast {
+    def cmake = new CMake()
+    cmake.build()
+  }
+}
+

@@ -1,0 +1,9 @@
+
+/workspaces/
+
+# vim
+*.swp
+
+# gradle
+/.gradle/
+
