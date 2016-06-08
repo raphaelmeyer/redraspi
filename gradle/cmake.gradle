@@ -1,0 +1,16 @@
+
+class CMakeTask extends DefaultTask {
+  String image
+  String workspace
+  String sourceContainer
+  String sourceHost
+  String command
+
+  @TaskAction
+  def run() {
+    println "docker --volumes-from ${workspace} -v ${sourceHost}:${sourceContainer}:ro ${image} cmake ${command}"
+  }
+}
+
+ext.CMakeTask = CMakeTask
+
