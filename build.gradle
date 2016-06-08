@@ -1,7 +1,7 @@
 apply from: 'gradle/cmake.gradle'
 apply from: 'gradle/workspace.gradle'
 
-task workspace(type: WorkspaceTask) {
+task raspbianWorkspace(type: WorkspaceTask) {
   dockerImage = 'raphaelmeyer/base:1.1.0'
   identifier = 'arm-bcm2708'
 }
@@ -13,14 +13,13 @@ def arm_bcm2708 = {
   sourceContainer = '/home/user/source'
 }
 
-task initialize(type: CMakeTask, dependsOn: workspace) {
+task initializeWorkspace(type: CMakeTask, dependsOn: raspbianWorkspace) {
   configure arm_bcm2708
   command = '/home/user/source'
 }
 
-task build(type: CMakeTask, dependsOn: initialize) {
+task build(type: CMakeTask, dependsOn: initializeWorkspace) {
   configure arm_bcm2708
   command = '. --build'
 }
-
 

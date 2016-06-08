@@ -1,9 +1,10 @@
 
 class WorkspaceTask extends DefaultTask {
+
   String dockerImage
   String identifier
 
-  private String workspacePath = 'workspaces'
+  private static final String workspacePath = 'workspaces'
 
   WorkspaceTask() {
     outputs.upToDateWhen { exists() }
@@ -16,7 +17,7 @@ class WorkspaceTask extends DefaultTask {
 
   private def create() {
     def id = new ByteArrayOutputStream().withStream { os ->
-      def result = project.exec {
+      project.exec {
         executable = 'docker'
         args = [ 'create', dockerImage ]
         standardOutput = os
@@ -47,8 +48,8 @@ class WorkspaceTask extends DefaultTask {
     }
 
     def id = lines[0]
-    def psResult = new ByteArrayOutputStream().withStream { os ->
-      def result = project.exec {
+    def result = new ByteArrayOutputStream().withStream { os ->
+      project.exec {
         executable = 'docker'
         args = [ 'ps', '-f', "id=${id}", '-a', '--format', '{{.ID}}' ]
         standardOutput = os
@@ -56,10 +57,10 @@ class WorkspaceTask extends DefaultTask {
       os.toString().trim()
     }
 
-    if(psResult.isEmpty()) {
+    if(result.isEmpty()) {
       return false
     }
-    if(!id.startsWith(psResult)) {
+    if(!id.startsWith(result)) {
       return false
     }
 

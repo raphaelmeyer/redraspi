@@ -8,7 +8,7 @@ class CMakeTask extends DefaultTask {
 
   @TaskAction
   def run() {
-    println "docker --volumes-from ${workspace} -v ${sourceHost}:${sourceContainer}:ro ${image} cmake ${command}"
+    println "docker --rm -t --volumes-from ${workspace} -v ${sourceHost}:${sourceContainer}:ro ${image} cmake ${command}"
   }
 }
 
