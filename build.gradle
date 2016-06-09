@@ -31,3 +31,10 @@ task build(type: CMakeTask, dependsOn: initializeWorkspace) {
   command = [ '--build', '.' ]
 }
 
+task clean(type: CMakeTask, dependsOn: initializeWorkspace) {
+  configure arm_bcm2708
+  workspace = raspbian
+  command = [ '--build', '.', '--target', 'clean' ]
+}
+
+
