@@ -1,14 +1,18 @@
 
 class CMakeTask extends DefaultTask {
   String image
-  String workspace
   String sourceContainer
   String sourceHost
-  String command
+  def command
+  def workspace
 
   @TaskAction
   def run() {
-    println "docker --rm -t --volumes-from ${workspace} -v ${sourceHost}:${sourceContainer}:ro ${image} cmake ${command}"
+    def sourceHostAbsolute = new File(sourceHost).absolutePath
+    project.exec {
+      executable = 'docker'
+      args = [ 'run', '--rm', '-t', '--volumes-from', workspace.id, '-v', "${sourceHostAbsolute}:${sourceContainer}:ro", image, 'cmake'] + command
+    }
   }
 }
 

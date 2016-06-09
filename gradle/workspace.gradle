@@ -1,8 +1,7 @@
-
 class WorkspaceTask extends DefaultTask {
 
   String dockerImage
-  String identifier
+  def workspace
 
   private static final String workspacePath = 'workspaces'
 
@@ -31,13 +30,15 @@ class WorkspaceTask extends DefaultTask {
     }
     assert path.isDirectory()
 
-    def file = new File(path, identifier)
+    def file = new File(path, workspace.name)
     file.write(id)
     file << '\n'
+
+    workspace.id = id
   }
 
   protected def exists() {
-    def file = new File(workspacePath, identifier)
+    def file = new File(workspacePath, workspace.name)
     if(!file.exists()) {
       return false
     }
@@ -63,6 +64,8 @@ class WorkspaceTask extends DefaultTask {
     if(!id.startsWith(result)) {
       return false
     }
+
+    workspace.id = id
 
     return true
   }

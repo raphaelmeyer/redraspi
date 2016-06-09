@@ -1,25 +1,33 @@
 apply from: 'gradle/cmake.gradle'
 apply from: 'gradle/workspace.gradle'
 
+class Workspace {
+  String id
+  String name
+}
+
+def raspbian = new Workspace(name: 'raspbian')
+
 task raspbianWorkspace(type: WorkspaceTask) {
   dockerImage = 'raphaelmeyer/base:1.1.0'
-  identifier = 'arm-bcm2708'
+  workspace = raspbian
 }
 
 def arm_bcm2708 = {
   image = 'raphaelmeyer/arm-bcm2708:1.0.0'
-  workspace = 'arm-bcm2708'
   sourceHost = 'source'
   sourceContainer = '/home/user/source'
 }
 
 task initializeWorkspace(type: CMakeTask, dependsOn: raspbianWorkspace) {
   configure arm_bcm2708
-  command = '/home/user/source'
+  workspace = raspbian
+  command = [ '-DCMAKE_TOOLCHAIN_FILE=/opt/cmake/raspbian.cmake', '/home/user/source' ]
 }
 
 task build(type: CMakeTask, dependsOn: initializeWorkspace) {
   configure arm_bcm2708
-  command = '. --build'
+  workspace = raspbian
+  command = [ '--build', '.' ]
 }
 
