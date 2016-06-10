@@ -7,3 +7,5 @@ services:
 
 script: gradle build
 
+install: true
+
