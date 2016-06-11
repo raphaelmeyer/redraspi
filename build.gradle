@@ -1,4 +1,5 @@
 apply from: 'gradle/cmake.gradle'
+apply from: 'gradle/rsync.gradle'
 apply from: 'gradle/workspace.gradle'
 
 class Workspace {
@@ -37,4 +38,7 @@ task clean(type: CMakeTask, dependsOn: initializeWorkspace) {
   command = [ '--build', '.', '--target', 'clean' ]
 }
 
+task syncRootfs(type: SyncRootfs) {
+  host = 'rpi2_blue'
+}
 
