@@ -61,11 +61,17 @@ passwd pi
 echo root:`pwgen -y -s 32 1` | chpasswd
 echo alarm:`pwgen -y -s 32 1` | chpasswd
 
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/python-raspberry-gpio.tar.gz
-# build as user
-# makepkg
-# install
+gpasswd -d alarm wheel
 
+wget -P /tmp https://aur.archlinux.org/cgit/aur.git/snapshot/python-raspberry-gpio.tar.gz
+(
+  cd /tmp
+  tar zxf python-raspberry-gpio.tar.gz
+  chown pi:pi -R python-raspberry-gpio
+  cd python-raspberry-gpio
+  su - -c makepkg pi
+  pacman -U python-raspberry-gpio*.xz
+)
 
 rm -- "$0"
 
