@@ -7,7 +7,15 @@ Red Ras Pi
 
 ## Setup
 
-    ./setup_arch.sh [/dev/sdX]
+- Pepare the sd card:
 
-See https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3 for reference
+    ./setup_sdcard.sh [/dev/sdX]
+
+  See https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3 for reference
+
+- Start the raspberry pi
+- SSH to raspberry pi with user _alarm_ and password _alarm_
+- Execute the setup script:
+
+    ./setup_arch.sh
 
