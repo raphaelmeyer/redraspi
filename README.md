@@ -9,4 +9,5 @@ Red Ras Pi
 
     ./setup_arch.sh [/dev/sdX]
 
+See https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3 for reference
 
