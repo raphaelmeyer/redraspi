@@ -15,7 +15,11 @@ Red Ras Pi
 
 - Start the raspberry pi
 - SSH to raspberry pi with user _alarm_ and password _alarm_
+- Change to root. The root password is root:
+
+    alarmpi$ su
+
 - Execute the setup script:
 
-    ./setup_arch.sh
+    alarmpi$ /root/setup_arch.sh
 
