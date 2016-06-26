@@ -9,7 +9,7 @@ Red Ras Pi
 
 - Pepare the sd card:
 
-    ./setup_sdcard.sh [/dev/sdX]
+    host$ ./setup_sdcard.sh [/dev/sdX]
 
   See https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3 for reference
 
