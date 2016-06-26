@@ -9,7 +9,7 @@ Red Ras Pi
 
 - Pepare the sd card:
 
-      host$ ./setup_sdcard.sh [/dev/sdX]
+        host$ ./setup_sdcard.sh [/dev/sdX]
 
   See https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3 for reference
 
@@ -17,9 +17,9 @@ Red Ras Pi
 - SSH to raspberry pi with user _alarm_ and password _alarm_
 - Change to root. The root password is root:
 
-      alarmpi$ su
+        alarmpi$ su
 
 - Execute the setup script:
 
-      alarmpi$ /root/setup_arch.sh
+        alarmpi$ /root/setup_arch.sh
 
