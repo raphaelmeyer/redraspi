@@ -1,11 +1,11 @@
 sudo: required
 
-language: java
+#language: cpp
 
 services:
   - docker
 
-script: gradle build
+script: true
 
 install: true
 
