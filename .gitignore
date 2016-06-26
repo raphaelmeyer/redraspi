@@ -2,6 +2,6 @@
 # vim
 *.swp
 
-/download/
-/mount/
+/setup/download/
+/setup/mount/
 
