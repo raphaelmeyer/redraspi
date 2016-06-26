@@ -18,13 +18,15 @@ fi
 pacman -Syu --noconfirm
 pacman -Sy --noconfirm sudo \
   cmake \
+  fakeroot \
   gcc \
   git \
   make \
   pwgen \
   python \
   python-pyserial \
-  python-setuptools
+  python-setuptools \
+  wget
 
 ################################################################
 cat >> /boot/config.txt <<EOF
@@ -69,8 +71,8 @@ wget -P /tmp https://aur.archlinux.org/cgit/aur.git/snapshot/python-raspberry-gp
   tar zxf python-raspberry-gpio.tar.gz
   chown pi:pi -R python-raspberry-gpio
   cd python-raspberry-gpio
-  su - -c makepkg pi
-  pacman -U python-raspberry-gpio*.xz
+  su -c makepkg pi
+  pacman -U --noconfirm python-raspberry-gpio-*.pkg.tar.xz
 )
 
 rm -- "$0"
