@@ -24,6 +24,7 @@ pacman -Sy --noconfirm sudo \
   make \
   pwgen \
   python \
+  python-pip \
   python-pyserial \
   python-setuptools \
   wget
@@ -74,6 +75,8 @@ wget -P /tmp https://aur.archlinux.org/cgit/aur.git/snapshot/python-raspberry-gp
   su -c makepkg pi
   pacman -U --noconfirm python-raspberry-gpio-*.pkg.tar.xz
 )
+
+pip install python-twitter
 
 rm -- "$0"
 
