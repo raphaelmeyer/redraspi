@@ -53,6 +53,15 @@ cat > /etc/sudoers.d/wheel <<EOF
 
 EOF
 ################################################################
+cat >> /etc/locale.gen <<EOF
+
+en_GB.UTF-8
+
+EOF
+################################################################
+
+locale-gen
+localectl set-locale LANG=en_GB.UTF-8
 
 useradd -m -G wheel -s /bin/bash pi
 
