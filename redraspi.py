@@ -18,9 +18,9 @@ def main():
 
     take_picture()
 
-    status = api.PostMedia(status = 'My first post. Weeha!', media='/tmp/picture.jpg')
-
-    print(status)
+    #deprecated, use api.PostUpdate instead
+    #status = api.PostMedia(status = 'My first post. Weeha!', media='/tmp/picture.jpg')
+    #print(status)
 
 if __name__ == "__main__":
     main()
