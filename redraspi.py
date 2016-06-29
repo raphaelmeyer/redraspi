@@ -9,8 +9,7 @@ def main():
             access_token_secret = config.twitter.access_secret,
             input_encoding = 'utf-8')
 
-    print(api.GetUserTimeline(screen_name='pimoroni'.encode()))
-
+    print(api.GetUserTimeline(screen_name='pimoroni'))
 
 if __name__ == "__main__":
     main()
