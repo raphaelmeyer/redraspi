@@ -59,9 +59,18 @@ en_GB.UTF-8
 
 EOF
 ################################################################
+cat > /etc/profile.d/vc_path.sh << EOF
+#!/bin/sh
+
+export PATH=${PATH}:/opt/vc/bin
+
+EOF
+################################################################
 
 locale-gen
 localectl set-locale LANG=en_GB.UTF-8
+
+chmod 755 /etc/profile.d/vc_path.sh
 
 useradd -m -G wheel -s /bin/bash pi
 
