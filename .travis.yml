@@ -1,11 +1,9 @@
-sudo: required
+language: python
 
-#language: cpp
-
-services:
-  - docker
-
-script: true
+python:
+  - "3.5"
 
 install: true
+
+script: nosetests
 
