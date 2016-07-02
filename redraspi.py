@@ -6,14 +6,14 @@ def take_picture():
     subprocess.run(['raspistill', '-o', '/tmp/picture.jpg', '-hf', '-vf', '-w', '256', '-h', '256', '-t', '1000'])
 
 def main():
-    import config
+    from settings import settings
     import twitter
 
     api = twitter.Api(
-            consumer_key = config.twitter.consumer_key,
-            consumer_secret = config.twitter.consumer_secret,
-            access_token_key = config.twitter.access_token,
-            access_token_secret = config.twitter.access_secret,
+            consumer_key = settings.consumer_key,
+            consumer_secret = settings.consumer_secret,
+            access_token_key = settings.access_token,
+            access_token_secret = settings.access_secret,
             input_encoding = 'utf-8')
 
     take_picture()

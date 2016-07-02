@@ -1,5 +1,5 @@
 
-class twitter:
+class Defaults:
   consumer_key = ''
   consumer_secret = ''
 
