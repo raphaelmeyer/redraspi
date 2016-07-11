@@ -1,5 +1,9 @@
 #!/bin/python
 
+class RedRasPi:
+    def start(self):
+        pass
+
 def take_picture():
     import subprocess
 
@@ -22,7 +26,5 @@ def main():
     #status = api.PostMedia(status = 'My first post. Weeha!', media='/tmp/picture.jpg')
     #print(status)
 
-if __name__ == "__main__":
-    main()
 
 
