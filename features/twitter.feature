@@ -9,5 +9,5 @@ Feature: Tweet messages on twitter
     And I'm awake
     When it is bright enough
     Then I take a picture
-    And post it on twitter
+    And I post the picture on twitter
 

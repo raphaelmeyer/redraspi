@@ -20,9 +20,9 @@ def step_impl(context):
     #   - camera abstraction ?
     pass
 
-@then(u'post it on twitter')
+@then(u'I post the picture on twitter')
 def step_impl(context):
+    context.twitter_instance.PostUpdate.assert_called_with()
     # assert tweet
     #   - check twitter API mock for PostUpdate
-    pass
 
