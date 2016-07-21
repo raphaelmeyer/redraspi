@@ -9,6 +9,16 @@ def before_scenario(context, scenario):
     context.twitter_mock = context.twitter_patch.start()
     context.twitter_instance = context.twitter_mock.return_value
 
+    context.camera_patch = mock.patch('redraspi.camera.Camera')
+    context.camera_mock = context.camera_patch.start()
+    context.camera_instance = context.camera_mock.return_value
+
+    from redraspi import redraspi
+    context.app = redraspi.RedRasPi()
+    context.app.start()
+
 def after_scenario(context, scenario):
+    context.app.stop()
+    context.camera_patch.stop()
     context.twitter_patch.stop()
 

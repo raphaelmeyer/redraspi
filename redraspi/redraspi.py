@@ -2,9 +2,17 @@
 
 class RedRasPi:
     def start(self):
+
+        from redraspi import camera
+        cam = camera.Camera()
+        cam.take_picture()
+
         import twitter
         api = twitter.Api()
         timeline = api.PostUpdate()
+
+    def stop(self):
+        pass
 
 def take_picture():
     import subprocess

@@ -6,8 +6,7 @@ Feature: Tweet messages on twitter
   @wip
   Scenario: Tweet once a day
     Given I have not yet tweeted today
-    And I'm awake
-    When it is bright enough
+    When it gets bright enough
     Then I take a picture
-    And I post the picture on twitter
+    And I post the picture on twitter with a comment
 
