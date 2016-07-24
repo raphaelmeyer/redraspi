@@ -2,24 +2,17 @@
 
 class RedRasPi:
     def start(self):
-
-        from redraspi import camera
-        cam = camera.Camera()
-        cam.take_picture()
-
-        import twitter
-        api = twitter.Api()
-        timeline = api.PostUpdate()
+        pass
 
     def stop(self):
         pass
 
 def take_picture():
-    import subprocess
+    from redraspi import camera
+    cam = camera.Camera()
+    cam.take_picture()
 
-    subprocess.run(['raspistill', '-o', '/tmp/picture.jpg', '-hf', '-vf', '-w', '256', '-h', '256', '-t', '1000'])
-
-def main():
+def post_tweet():
     from settings import settings
     import twitter
 
@@ -30,11 +23,5 @@ def main():
             access_token_secret = settings.access_secret,
             input_encoding = 'utf-8')
 
-    take_picture()
-
-    #deprecated, use api.PostUpdate instead
-    #status = api.PostMedia(status = 'My first post. Weeha!', media='/tmp/picture.jpg')
-    #print(status)
-
-
+    api.PostUpdate()
 
