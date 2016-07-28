@@ -13,5 +13,5 @@ def step_impl(context):
 
 @then(u'I post the picture on twitter with a comment')
 def step_impl(context):
-    context.twitter_instance.PostUpdate.assert_called_with()
+    context.twitter_instance.PostUpdate.assert_called_once_with()
 
