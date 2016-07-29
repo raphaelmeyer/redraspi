@@ -23,5 +23,11 @@ class TestCamera:
         assert cmd[cmd.index('-w') + 1] == '256'
         assert cmd[cmd.index('-h') + 1] == '256'
 
+    def test_the_picture_should_be_stored_in_a_temporary_location_with_a_fixed_named(self, mock_run):
+        cam = camera.Camera()
+        cam.take_picture()
 
+        cmd = mock_run.call_args[0][0]
+        assert '-o' in cmd
+        assert cmd[cmd.index('-o') + 1] == '/tmp/picture.jpg'
 
