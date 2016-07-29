@@ -2,7 +2,7 @@
 
 class RedRasPi:
     def start(self):
-        pass
+        take_picture()
 
     def stop(self):
         pass
