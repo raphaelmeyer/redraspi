@@ -31,3 +31,11 @@ class TestCamera:
         assert '-o' in cmd
         assert cmd[cmd.index('-o') + 1] == '/tmp/picture.jpg'
 
+    def test_the_camera_should_have_1000ms_to_adjust_before_taking_a_picture(self, mock_run):
+        cam = camera.Camera()
+        cam.take_picture()
+
+        cmd = mock_run.call_args[0][0]
+        assert '-t' in cmd
+        assert cmd[cmd.index('-t') + 1] == '1000'
+
