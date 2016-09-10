@@ -13,12 +13,19 @@ def before_scenario(context, scenario):
     context.camera_mock = context.camera_patch.start()
     context.camera_instance = context.camera_mock.return_value
 
+    context.flotilla_patch = mock.patch('flotilla.Client')
+    context.flotilla_mock = context.flotilla_patch.start()
+    context.flotilla_client = context.flotilla_mock.return_value
+
+    context.light = context.flotilla_client.first.return_value
+
     from redraspi import redraspi
     context.app = redraspi.RedRasPi()
     context.app.start()
 
 def after_scenario(context, scenario):
     context.app.stop()
+    context.flotilla_patch.stop()
     context.camera_patch.stop()
     context.twitter_patch.stop()
 
