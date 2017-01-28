@@ -6,3 +6,9 @@
     behave -t ~@wip
     python -m redraspi
 
+## Dependencies
+
+    - behave
+    - nose
+    - python-twitter
+
