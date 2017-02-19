@@ -9,9 +9,9 @@ before_install:
   - git clone https://github.com/pimoroni/flotilla-python
 
 install:
-  - pip install --user behave
-  - pip install --user python-twitter
-  - cd flotilla-python/library && ./setup.py install --user
+  - pip install behave
+  - pip install python-twitter
+  - cd flotilla-python/library && ./setup.py install
 
 script:
   - nosetests
