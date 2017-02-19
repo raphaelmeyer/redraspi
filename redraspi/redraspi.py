@@ -13,10 +13,15 @@ class Main:
         self.camera.take_picture()
 
 class RedRasPi:
+    def __init__(self):
+        self.running = False
+
     def start(self):
         main = Main()
-        main.loop()
+        self.running = True
+        while self.running:
+            main.loop()
 
     def stop(self):
-        pass
+        self.running = False
 
