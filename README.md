@@ -8,8 +8,8 @@
 
 ## Dependencies
 
-    - behave
-    - nose
-    - python-twitter
-    - [flotilla-python](https://github.com/pimoroni/flotilla-python)
+- behave
+- nose
+- python-twitter
+- [flotilla-python](https://github.com/pimoroni/flotilla-python)
 
