@@ -1,6 +1,6 @@
 # Red Ras Pi
 
-[![Build Status](https://travis-ci.org/raphaelmeyer/redraspi.svg?branch=master)](https://travis-ci.org/raphaelmeyer/redraspi)
+[![Build Status](https://travis-ci.org/raphaelmeyer/redraspi.svg?branch=develop)](https://travis-ci.org/raphaelmeyer/redraspi)
 
     nosetests
     behave -t ~@wip
@@ -11,4 +11,5 @@
     - behave
     - nose
     - python-twitter
+    - [flotilla-python](https://github.com/pimoroni/flotilla-python)
 
