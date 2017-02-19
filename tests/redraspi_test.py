@@ -46,5 +46,9 @@ class TestRedRasPi(unittest.TestCase):
 
     @unittest.skip("pending")
     def test_that_there_is_a_pause_of_100ms_between_each_main_loop_call(self, Main, Time):
-        assert False
+        self.fail()
+
+    @unittest.skip("pending")
+    def test_that_the_main_loop_stops_when_shut_down(self, Main, Time):
+        self.fail()
 
